@@ -47,7 +47,7 @@ import { runMiddleware } from '@utils/runMiddleware'
  *               
  */
 
- const cors = Cors({
+const cors = Cors({
   methods: ['POST', 'GET', 'HEAD',],
   origin: '*',
   preflightContinue: true
@@ -58,10 +58,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { page, limit } = req.body
   try {
     await runMiddleware(req, res, cors)
     const db = await connectDB()
+    const { page, limit } = req.body 
     if (db) {
       const activity = db.collection('activity')
       const activitys = await activity.find({}).skip((page - 1) * limit).limit(limit).toArray()
@@ -70,6 +70,6 @@ export default async function handler(
       new Error('连接数据库失败')
     }
   } catch (error) {
-    res.status(500).json({ success: false, error: (error as Error).message })
+    res.status(200).json({ success: false, error: (error as Error).message })
   }
 }
