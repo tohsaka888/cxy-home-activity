@@ -8,7 +8,7 @@ import { runMiddleware } from '@utils/runMiddleware'
 /**
  * @openapi
  * paths:
- *   /api/competition/{id}:
+ *   /api/activity/{id}:
  *     get:
  *       description: 获取活动详情
  *       parameters:
