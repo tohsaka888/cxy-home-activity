@@ -1,3 +1,10 @@
+/*
+ * @Author: tohsaka888
+ * @Date: 2022-09-02 14:10:59
+ * @LastEditors: tohsaka888
+ * @LastEditTime: 2022-09-09 17:22:08
+ * @Description: 请填写简介
+ */
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { connectDB } from '../../utils/connectDB'
@@ -56,6 +63,6 @@ export default async function handler(
       new Error('连接数据库失败')
     }
   } catch (error) {
-    res.status(500).json({ success: false, error: (error as Error).message })
+    res.status(200).json({ success: false, error: (error as Error).message })
   }
 }
